@@ -1,0 +1,5 @@
+1 - Criar um frontend para conversar com o back;
+    - Usuário poder escolher:
+        - uma fazenda;
+        - um produto;
+        - uma data específica, mas não de ser uma data depois da validade do produto;

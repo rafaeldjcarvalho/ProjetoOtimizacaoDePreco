@@ -1,0 +1,6 @@
+pandas
+matplotlib
+SQLAlchemy
+PyMySQL
+Flask  # ou FastAPI, dependendo do que escolher para a API
+SciPy  # Para futuras otimizações
