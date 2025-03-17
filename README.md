@@ -1,29 +1,66 @@
-## README.md
-```markdown
-# Sistema de Otimização de Precificação para Produtos Lácteos Próximos ao Vencimento
+# Otimização de Precificação de Lácteos
 
-## Descrição
-Este projeto automatiza a gestão de preços de produtos lácteos perecíveis, aplicando descontos progressivos com base na proximidade do vencimento. A ferramenta visa reduzir o desperdício e otimizar a margem de lucro.
+Este projeto realiza a análise e otimização de preços para produtos lácteos, considerando a data de validade e aplicando descontos dinâmicos conforme a proximidade do vencimento. Agora, há duas formas de executar o sistema: por meio de uma interface gráfica ou pela execução tradicional com geração de gráficos.
 
-## Tecnologias
-- **Backend:** Python, Flask/FastAPI
-- **Banco de Dados:** MySQL (via SQLAlchemy)
-- **Bibliotecas:** Pandas, Matplotlib, SQLAlchemy, SciPy/PuLP
+## 📌 Funcionalidades
+- **Interface Gráfica (`gui.py`)**: Permite filtrar os produtos por localidade, nome e data, exibindo os preços ajustados dinamicamente.
+- **Execução Tradicional (`main.py`)**: Processa os dados e gera gráficos de precificação.
 
-## Como Executar
-1. Instale as dependências:
+## 📥 Instalação
+### **1. Clonar o repositório**
+```sh
+git clone https://github.com/seu-repositorio.git
+cd seu-repositorio
 ```
+### **2. Instalar as dependências**
+```sh
 pip install -r requirements.txt
 ```
 
-2. Configure o banco MySQL.
-
-3. Adicione o arquivo `dairy_dataset.csv` à pasta `data/`.
-
-4. Execute o sistema:
+## 🚀 Como Executar
+### **1. Modo Interface Gráfica** (Recomendado)
+```sh
+python gui.py
 ```
+- Um painel será aberto, permitindo selecionar localidade, produto e data.
+- Os preços ajustados serão exibidos em uma tabela dinâmica.
+
+### **2. Modo Tradicional (Gerar Gráficos)**
+```sh
 python main.py
 ```
+- O script processará os dados e exibirá gráficos de precificação.
 
-O sistema processará os dados, aplicará os descontos e gerará um gráfico com os preços ajustados!
+## 📊 Lógica de Precificação
+A classe `PricingStrategy` calcula descontos baseados na proximidade da data de vencimento:
+- **≤ 2 dias** para expirar → **30% de desconto**
+- **≤ 5 dias** para expirar → **10% de desconto**
+- **≤ 10 dias** para expirar → **5% de desconto**
+- **> 10 dias** para expirar → **Sem desconto**
+
+## 📌 Estrutura do Projeto
 ```
+├── data/
+│   ├── dairy_dataset.csv  # Dataset de produtos lácteos
+├── models/
+│   ├── product.py         # Modelo de produto
+│   ├── pricing_strategy.py  # Estratégia de precificação
+├── services/
+│   ├── pricing_service.py # Serviço de cálculo de preço
+├── gui.py                 # Interface gráfica (Tkinter)
+├── main.py                # Execução tradicional com gráficos
+├── requirements.txt       # Dependências do projeto
+├── README.md              # Documentação
+```
+
+## 🛠 Tecnologias Utilizadas
+- **Python 3.9+**
+- **Tkinter** (Interface Gráfica)
+- **Pandas** (Manipulação de dados)
+- **Matplotlib** (Geração de gráficos)
+
+## 📬 Contato
+Para dúvidas ou sugestões, entre em contato pelo GitHub.
+
+---
+Agora você pode escolher entre visualizar os dados pela interface gráfica ou gerar gráficos com `main.py`. 🚀
